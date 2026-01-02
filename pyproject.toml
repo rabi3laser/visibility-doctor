@@ -33,6 +33,7 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 
+# Dependencies - uses YOUR existing packages!
 dependencies = [
     "airbnb-scraper @ git+https://github.com/rabi3laser/airbnb-scraper.git",
     "listing-grader @ git+https://github.com/rabi3laser/hosttools.git#subdirectory=services/listing-grader"
@@ -48,6 +49,7 @@ dev = [
 ]
 
 [project.scripts]
+# CLI commands
 visibility-doctor = "visibility_doctor.cli:main"
 vdoc = "visibility_doctor.cli:main"
 

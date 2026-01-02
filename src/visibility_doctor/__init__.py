@@ -40,11 +40,16 @@ from .analyzer import GapAnalyzer, GapAnalysis, Gap
 from .actions import ActionPlanGenerator, Action
 
 __all__ = [
+    # Main class
     "VisibilityDoctor",
     "VisibilityDoctorResult",
+    
+    # Gap analysis
     "GapAnalyzer",
     "GapAnalysis",
     "Gap",
+    
+    # Action planning
     "ActionPlanGenerator",
     "Action",
 ]

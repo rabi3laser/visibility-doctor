@@ -88,6 +88,15 @@ vdoc analyze 12345678 --no-market
 vdoc analyze 12345678 --currency USD --radius 10 --max-competitors 30
 ```
 
+### Quick function
+
+```python
+from visibility_doctor import analyze_listing
+
+# One-liner analysis
+result = await analyze_listing("https://airbnb.com/rooms/12345678")
+```
+
 ## 📊 Output Example
 
 ```
@@ -113,6 +122,70 @@ vdoc analyze 12345678 --currency USD --radius 10 --max-competitors 30
   Temps total:             4.5h
   Coût total:              €150
   Gain potentiel:          +35%
+
+⚡ QUICK WINS RECOMMANDÉS
+────────────────────────────────────────
+  • Activer Instant Book (+15%)
+  • Améliorer le temps de réponse (+8%)
+  • Ajuster le prix (+5%)
+```
+
+## 🔍 Gap Categories
+
+| Category | Description | Weight |
+|----------|-------------|--------|
+| `reviews` | Rating & review count | 25% |
+| `response` | Response rate & time | 15% |
+| `pricing` | Price vs market | 15% |
+| `photos` | Photo count & quality | 12% |
+| `settings` | Instant Book, etc. | 10% |
+| `amenities` | Missing amenities | 8% |
+| `badges` | Superhost, Guest Favorite | 7% |
+
+## 🎬 Action Templates
+
+The generator includes templates for common fixes:
+
+- **Instant Book** - 5 min, free
+- **Response time** - 15 min, free
+- **Photos** - 3h, €0-100
+- **Pricing** - 20 min, free
+- **Amenities** - 1h, €50-200
+- **Rating improvement** - ongoing, €50
+
+## 🛠 Development
+
+```bash
+# Clone
+git clone https://github.com/rabi3laser/visibility-doctor.git
+cd visibility-doctor
+
+# Install with dev dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest
+
+# Format code
+black src/
+ruff check src/
+```
+
+## 📁 Project Structure
+
+```
+visibility-doctor/
+├── src/
+│   └── visibility_doctor/
+│       ├── __init__.py      # Package exports
+│       ├── doctor.py        # Main VisibilityDoctor class
+│       ├── analyzer.py      # GapAnalyzer
+│       ├── actions.py       # ActionPlanGenerator
+│       └── cli.py           # Command line interface
+├── tests/
+│   └── test_analyzer.py
+├── pyproject.toml           # Package config
+└── README.md
 ```
 
 ## 🔗 Related Packages
