@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "visibility-doctor"
+version = "1.0.0"
+description = "Airbnb listing visibility analyzer - Gap analysis & Action plans"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Rbie", email = "rbie@azuz.ma" }
+]
+keywords = [
+    "airbnb",
+    "visibility",
+    "seo",
+    "ranking",
+    "optimization",
+    "vacation-rental",
+    "short-term-rental"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content"
+]
+requires-python = ">=3.10"
+
+dependencies = [
+    "airbnb-scraper @ git+https://github.com/rabi3laser/airbnb-scraper.git",
+    "listing-grader @ git+https://github.com/rabi3laser/hosttools.git#subdirectory=services/listing-grader"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "ruff>=0.1"
+]
+
+[project.scripts]
+visibility-doctor = "visibility_doctor.cli:main"
+vdoc = "visibility_doctor.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/rabi3laser/visibility-doctor"
+Documentation = "https://github.com/rabi3laser/visibility-doctor#readme"
+Repository = "https://github.com/rabi3laser/visibility-doctor"
+Issues = "https://github.com/rabi3laser/visibility-doctor/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/visibility_doctor"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
